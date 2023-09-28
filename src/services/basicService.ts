@@ -65,7 +65,7 @@ export const postWithAuth = async <T>(
   }
 }
 
-export const patchWithAuth = async <T>(
+export const putWithAuth = async <T>(
   urlRequest: string,
   params?: T,
   headers = {},
@@ -76,7 +76,7 @@ export const patchWithAuth = async <T>(
     },
   }
   try {
-    const response = await api.patch(urlRequest, params, config)
+    const response = await api.put(urlRequest, params, config)
     if (response.status === 200 || response.status === 201) {
       return response
     }

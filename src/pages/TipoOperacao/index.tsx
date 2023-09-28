@@ -93,6 +93,7 @@ export function TipoOperacao() {
                     _hover={{
                       bg: 'green.600',
                     }}
+                    onClick={() => navigate(`edit/${tipo.id}`)}
                   >
                     Editar
                   </Button>

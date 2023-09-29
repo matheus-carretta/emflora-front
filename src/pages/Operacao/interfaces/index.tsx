@@ -6,7 +6,7 @@ export interface IOperacao {
   nome: string
   valorUnitario: number
   rendPrincipal: number
-  rendSuporte?: number
+  rendSuporte: number
   tipoOperacaoId: number
   tipoOperacao: ITipoOperacao
 }
@@ -16,6 +16,6 @@ export interface ICreateOperacao {
   nome: string
   valorUnitario: number
   rendPrincipal: number
-  rendSuporte?: number
+  rendSuporte: number
   tipoOperacaoId: number
 }

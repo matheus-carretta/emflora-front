@@ -12,6 +12,7 @@ import { CreateTipoOperacao } from './pages/TipoOperacao/create'
 import { EditTipoOperacao } from './pages/TipoOperacao/edit'
 import { useOperacaoStore } from './store/operacao'
 import { Operacao } from './pages/Operacao'
+import { CreateOperacao } from './pages/Operacao/create'
 
 export declare type Params<Key extends string = string> = {
   readonly [key in Key]: string | undefined
@@ -53,6 +54,16 @@ function App() {
           loader={async () => {
             const operacoes = await useOperacaoStore.getState().getOperacoes()
             return operacoes
+          }}
+        />
+        <Route
+          path="operacao/criar"
+          element={<CreateOperacao />}
+          loader={async () => {
+            const tipoOperacoes = await useTipoOperacaoStore
+              .getState()
+              .getTiposOperacao()
+            return tipoOperacoes
           }}
         />
       </Route>,

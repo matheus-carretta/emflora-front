@@ -32,7 +32,7 @@ export const useOperacaoStore = create<OperacaoStore>((set) => ({
   },
 
   getOneOperacao: async (id: number) => {
-    const response = await getWithAuth(`tipo-operacao/${id}`)
+    const response = await getWithAuth(`operacao/${id}`)
 
     if (response) {
       set({ operacaoDetails: response?.data })
@@ -43,6 +43,6 @@ export const useOperacaoStore = create<OperacaoStore>((set) => ({
   },
 
   editOperacao: async (id: number, data: ICreateOperacao) => {
-    await putWithAuth(`tipo-operacao/${id}`, data)
+    await putWithAuth(`operacao/${id}`, data)
   },
 }))

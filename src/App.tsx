@@ -13,6 +13,7 @@ import { EditTipoOperacao } from './pages/TipoOperacao/edit'
 import { useOperacaoStore } from './store/operacao'
 import { Operacao } from './pages/Operacao'
 import { CreateOperacao } from './pages/Operacao/create'
+import { EditOperacao } from './pages/Operacao/edit'
 
 export declare type Params<Key extends string = string> = {
   readonly [key in Key]: string | undefined
@@ -64,6 +65,22 @@ function App() {
               .getState()
               .getTiposOperacao()
             return tipoOperacoes
+          }}
+        />
+        <Route
+          path="operacao/edit/:id"
+          element={<EditOperacao />}
+          loader={async ({ params }: { params: Params }) => {
+            if (params.id) {
+              await useTipoOperacaoStore.getState().getTiposOperacao()
+
+              const operacao = await useOperacaoStore
+                .getState()
+                .getOneOperacao(+params.id)
+
+              return operacao
+            }
+            return null
           }}
         />
       </Route>,

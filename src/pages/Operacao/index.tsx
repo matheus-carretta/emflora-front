@@ -25,7 +25,7 @@ export function Operacao() {
 
   async function handleDelete(id: number) {
     try {
-      await deleteWithAuth(`tipo-operacao/${id}`)
+      await deleteWithAuth(`operacao/${id}`)
       await getOperacoes()
     } catch (error) {
       const err = error as AxiosError
@@ -85,7 +85,7 @@ export function Operacao() {
           <Tbody>
             {operacoes?.map((operacao) => (
               <Tr key={operacao.id}>
-                <Td textAlign="center">{operacao.codigo}</Td>
+                <Td>{operacao.codigo}</Td>
                 <Td>{operacao.nome}</Td>
                 <Td textAlign="center">{operacao.tipoOperacao.nome}</Td>
                 <Td textAlign="center">

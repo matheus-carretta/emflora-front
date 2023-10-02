@@ -9,8 +9,6 @@ import {
   useToast,
   InputGroup,
   InputLeftAddon,
-  NumberInput,
-  NumberInputField,
   Select,
 } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -29,16 +27,6 @@ const createOperacaoFormSchema = z.object({
     .string()
     .nonempty('O nome é obrigatório.')
     .min(3, 'O nome do  de operação precisa ter ao menso três caracteres.'),
-  valorUnitario: z
-    .number()
-    .nonnegative('Não é possível enviar valores negativos'),
-  rendPrincipal: z
-    .number()
-    .nonnegative('Não é possível enviar valores negativos'),
-  rendSuporte: z
-    .number()
-    .nonnegative('Não é possível enviar valores negativos')
-    .optional(),
   tipoOperacaoId: z.number(),
 })
 
@@ -53,9 +41,6 @@ export function CreateOperacao() {
 
   async function onSubmit(data: createOperacaoInputs) {
     const newOperacao: ICreateOperacao = {
-      rendSuporte: data.rendSuporte ? data.rendSuporte : 0,
-      valorUnitario: data.valorUnitario * 100,
-      rendPrincipal: data.rendPrincipal * 100,
       codigo: data.codigo,
       nome: data.nome,
       tipoOperacaoId: +data.tipoOperacaoId,
@@ -163,91 +148,6 @@ export function CreateOperacao() {
                 </option>
               ))}
             </Select>
-          </FormControl>
-
-          <FormControl
-            as="fieldset"
-            isInvalid={!!errors.valorUnitario}
-            isRequired
-          >
-            <FormLabel as="legend">Valor unitário</FormLabel>
-            <NumberInput
-              bg="blackAlpha.50"
-              focusBorderColor="green.500"
-              borderRadius={4}
-              step={0.2}
-            >
-              <NumberInputField
-                {...register('valorUnitario', { valueAsNumber: true })}
-                color="gray.700"
-                fontWeight="bold"
-                _placeholder={{
-                  color: 'gray.500',
-                }}
-                placeholder="Valor em reais"
-              />
-            </NumberInput>
-
-            {errors.valorUnitario && (
-              <FormErrorMessage>
-                {errors.valorUnitario.message}
-              </FormErrorMessage>
-            )}
-          </FormControl>
-
-          <FormControl
-            as="fieldset"
-            isInvalid={!!errors.rendPrincipal}
-            isRequired
-          >
-            <FormLabel as="legend">Rend. Principal</FormLabel>
-            <NumberInput
-              bg="blackAlpha.50"
-              focusBorderColor="green.500"
-              borderRadius={4}
-              step={0.2}
-            >
-              <NumberInputField
-                {...register('rendPrincipal', { valueAsNumber: true })}
-                color="gray.700"
-                fontWeight="bold"
-                _placeholder={{
-                  color: 'gray.500',
-                }}
-                placeholder="Valor em reais"
-              />
-            </NumberInput>
-
-            {errors.rendPrincipal && (
-              <FormErrorMessage>
-                {errors.rendPrincipal.message}
-              </FormErrorMessage>
-            )}
-          </FormControl>
-
-          <FormControl as="fieldset" isInvalid={!!errors.rendSuporte}>
-            <FormLabel as="legend">Rend. Suporte</FormLabel>
-            <NumberInput
-              bg="blackAlpha.50"
-              focusBorderColor="green.500"
-              borderRadius={4}
-              step={0.2}
-              defaultValue={0}
-            >
-              <NumberInputField
-                {...register('rendSuporte', { valueAsNumber: true })}
-                color="gray.700"
-                fontWeight="bold"
-                _placeholder={{
-                  color: 'gray.500',
-                }}
-                placeholder="Valor em reais"
-              />
-            </NumberInput>
-
-            {errors.rendSuporte && (
-              <FormErrorMessage>{errors.rendSuporte.message}</FormErrorMessage>
-            )}
           </FormControl>
         </Flex>
 

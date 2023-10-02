@@ -127,7 +127,7 @@ export function EditTipoOperacao() {
           isLoading={isSubmitting}
           isDisabled={!isDirty}
         >
-          Criar tipo de operação
+          Editar tipo de operação
         </Button>
       </Flex>
     </Flex>

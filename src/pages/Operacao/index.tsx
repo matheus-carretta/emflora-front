@@ -15,7 +15,6 @@ import {
 } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useOperacaoStore } from '../../store/operacao'
-import { convertCentsToReais } from '../../utils/coin-convert'
 
 export function Operacao() {
   const operacoes = useOperacaoStore((state) => state.operacoes)
@@ -75,9 +74,6 @@ export function Operacao() {
               <Th>Código</Th>
               <Th>Nome</Th>
               <Th textAlign="center">Tipo de Operação</Th>
-              <Th textAlign="center">Valor unitário</Th>
-              <Th textAlign="center">Rend. Principal</Th>
-              <Th textAlign="center">Rend. Suporte</Th>
               <Th textAlign="center">Editar</Th>
               <Th textAlign="center">Deletar</Th>
             </Tr>
@@ -88,17 +84,6 @@ export function Operacao() {
                 <Td>{operacao.codigo}</Td>
                 <Td>{operacao.nome}</Td>
                 <Td textAlign="center">{operacao.tipoOperacao.nome}</Td>
-                <Td textAlign="center">
-                  {convertCentsToReais(operacao.valorUnitario)}
-                </Td>
-                <Td textAlign="center">
-                  {convertCentsToReais(operacao.rendPrincipal)}
-                </Td>
-                <Td textAlign="center">
-                  {operacao.rendSuporte
-                    ? convertCentsToReais(operacao.rendSuporte)
-                    : convertCentsToReais(0)}
-                </Td>
                 <Td textAlign="center">
                   <Button
                     role="a"

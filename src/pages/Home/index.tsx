@@ -1,4 +1,4 @@
-import { Box, Image } from '@chakra-ui/react'
+import { Image } from '@chakra-ui/react'
 import { Flex } from '@chakra-ui/layout'
 
 export function Home() {

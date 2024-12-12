@@ -12,7 +12,7 @@ export function LoadingLogo() {
   return (
     <Flex w="full" h="full" justifyContent="center" alignItems="center">
       <Image
-        src="https://emflora.com.br/wordpress/wp-content/uploads/2018/12/cropped-Logo.png"
+        src="https://emflora.com.br/wp-content/uploads/2018/12/cropped-Logo-200x51.png"
         alt="loading logo"
         animation={imageAnimation}
         w="xs"

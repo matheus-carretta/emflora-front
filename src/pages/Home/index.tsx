@@ -4,12 +4,14 @@ import { Flex } from '@chakra-ui/layout'
 export function Home() {
   return (
     <Flex w="100%" h="95vh" justifyContent="center">
-      <Box boxSize="sm" alignSelf="center">
+      <Flex justifyContent="center" alignContent="center">
         <Image
-          src="https://emflora.com.br/wordpress/wp-content/uploads/2018/12/cropped-Logo.png"
+          src="https://emflora.com.br/wp-content/uploads/2018/12/cropped-Logo-200x51.png"
           alt="Dan Abramov"
+          w="200px"
+          h="51px"
         />
-      </Box>
+      </Flex>
     </Flex>
   )
 }
